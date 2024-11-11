@@ -1,5 +1,71 @@
+body {
+    font-family: sans-serif;
+    background-color: #f8f8f8;
+    color: #212121;
+    margin: 0;
+    padding: 20px;
+}
+
+h1 {
+    color: #212121;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.homework-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
 .homework-item {
-    border: 1px solid #ccc;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+}
+
+.homework-item:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.homework-item h2 {
+    color: #212121;
+    margin-top: 0;
     margin-bottom: 10px;
-    padding: 10px;
+}
+
+.homework-item p {
+    margin: 0 0 10px;
+    color: #424242;
+}
+
+
+.homework-item a {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 4px;
+    background-color: #212121;
+    color: white;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.homework-item a:hover {
+    background-color: #424242;
+}
+
+/* larger screens or more complex content*/
+
+@media (min-width: 768px) {
+    .homework-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .homework-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
