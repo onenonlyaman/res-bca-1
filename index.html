@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Homework</title>
+    <link rel="stylesheet" href="style.css"> 
+</head>
+<body>
+    <h1>My Homework</h1>
+    <div id="homework-container">
+    </div>
+
+    <script>
+      fetch('homework/homework.json') // Fetch from homework folder.
+        .then(response => response.json())
+        .then(homeworkData => {
+          const container = document.getElementById('homework-container');
+          homeworkData.forEach(item => {
+            const div = document.createElement('div');
+            div.className = 'homework-item';
+            div.innerHTML = `<h2>${item.title}</h2><p>${item.description}</p><p>${item.date}</p><a href="homework/${item.pdf_link}">Download PDF</a>`; // Link to PDF in homework folder.
+            container.appendChild(div);
+          });
+        });
+    </script>
+</body>
+</html>
