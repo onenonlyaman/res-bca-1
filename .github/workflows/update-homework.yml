@@ -11,8 +11,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         with:
-          fetch-depth: 0 # Important to get all history so we can see what's changed
-
+          fetch-depth: 0 
+          ref: homework
+          
       - name: Install Python
         uses: actions/setup-python@v4
         with:
@@ -47,19 +48,23 @@ jobs:
               json.dump(homework, f, indent=4)
 
           EOF
-
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@v3
+        with:
+          ref: gh-pages
+          path: gh-pages
+    
       - name: Create homework directory  
-        run: mkdir homework
+        run: mkdir -p gh-pages/homework
 
       - name: Move files to homework directory 
         run: |
-          mv *.pdf homework/
-          mv homework.json homework/
+          mv *.pdf gh-pages/homework/
+          mv homework.json gh-pages/homework/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./homework 
-          publish_branch: gh-pages 
-          keep_files: true
+          publish_dir: ./gh-pages 
+          publish_branch: gh-pages
