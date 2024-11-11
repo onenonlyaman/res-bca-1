@@ -24,6 +24,7 @@ h1 {
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.3s ease;
+    margin-bottom: 15px;
 }
 
 .homework-item:hover {
@@ -58,14 +59,8 @@ h1 {
 
 /* larger screens or more complex content*/
 
-@media (min-width: 768px) {
+@media screen and (max-width: 800px) {
     .homework-container {
         grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .homework-container {
-        grid-template-columns: repeat(3, 1fr);
     }
 }
