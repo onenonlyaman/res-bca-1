@@ -22,6 +22,7 @@ jobs:
       - name: Generate Homework JSON
         run: |
           python - <<EOF
+
           import json
           import os
           from datetime import datetime
@@ -30,19 +31,24 @@ jobs:
           for filename in os.listdir('.'):
               if filename.endswith('.pdf'):
                   try:
-                      title, date_str, description = filename[:-4].split('__', 2)  # Assumes filename format: title__YYYY-MM-DD__description.pdf
+                      parts = filename[:-4].split('__', 2)
+                      if len(parts) != 3:
+                          raise ValueError("Incorrect number of parts")
+
+                      title = parts[0].replace("_", " ")
+                      date_str = parts[1]
+                      description = parts[2].replace("_", " ")
                       date = datetime.strptime(date_str, '%Y-%m-%d').strftime('%Y-%m-%d')
-                  except ValueError:
-                      print(f"Skipping {filename}: Invalid filename format.")
+
+                      homework.append({
+                          "title": title,
+                          "description": description,
+                          "date": date,
+                          "pdf_link": filename
+                      })
+                  except ValueError as e:
+                      print(f"Skipping {filename}: {e}")
                       continue
-
-                  homework.append({
-                      "title": title,
-                      "description": description,
-                      "date": date,
-                      "pdf_link": filename # The PDF is in the same directory as the index.html in gh-pages after the next step
-                  })
-
 
           with open('homework.json', 'w') as f:
               json.dump(homework, f, indent=4)
