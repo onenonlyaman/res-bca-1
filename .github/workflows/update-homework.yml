@@ -48,6 +48,7 @@ jobs:
               json.dump(homework, f, indent=4)
 
           EOF
+
       - name: Checkout gh-pages branch
         uses: actions/checkout@v3
         with:
@@ -59,8 +60,8 @@ jobs:
 
       - name: Move files to homework directory 
         run: |
-          mv *.pdf gh-pages/homework/
-          mv homework.json gh-pages/homework/
+          cp *.pdf gh-pages/homework/
+          cp homework.json gh-pages/homework/
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -68,3 +69,5 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./gh-pages 
           publish_branch: gh-pages
+
+          
