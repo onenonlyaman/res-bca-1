@@ -1,9 +1,21 @@
 [
     {
+        "title": "Electronics",
+        "description": "Just the definations",
+        "date": "2024-11-14",
+        "pdf_link": "Electronics__2024-11-14__Just_the_definations.pdf"
+    },
+    {
         "title": "Algorithms",
         "description": "Iterative Statements",
         "date": "2024-11-12",
         "pdf_link": "Algorithms__2024-11-12__Iterative_Statements.pdf"
+    },
+    {
+        "title": "Algorithms",
+        "description": "Addition of digits algorithm only",
+        "date": "2024-11-14",
+        "pdf_link": "Algorithms__2024-11-14__Addition_of_digits_algorithm_only.pdf"
     },
     {
         "title": "Maths",
