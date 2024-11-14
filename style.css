@@ -1,66 +1,229 @@
+* {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
 body {
     font-family: sans-serif;
     background-color: #f8f8f8;
     color: #212121;
     margin: 0;
     padding: 20px;
+    transition: background-color 0.3s ease;
 }
 
 h1 {
     color: #212121;
     text-align: center;
     margin-bottom: 20px;
+    transition: color 0.3s ease;
 }
 
-.homework-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
-}
-
+/* Homework Item Styles */
 .homework-item {
+    display: flex;
+    align-items: center;
     background-color: white;
-    padding: 20px;
-    border-radius: 8px;
+    padding: 15px;
+    border-radius: 20px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
-    margin-bottom: 15px;
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+    margin-bottom: 10px;
 }
 
 .homework-item:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
 }
 
 .homework-item h2 {
     color: #212121;
     margin-top: 0;
-    margin-bottom: 10px;
+    font-weight: bold;
+    flex-grow: 1;
+    transition: color 0.3s ease;
 }
 
 .homework-item p {
-    margin: 0 0 10px;
+    margin: 0 20px;
     color: #424242;
+    flex-shrink: 1;
+    transition: color 0.3s ease;
 }
 
-
 .homework-item a {
-    display: inline-block;
-    padding: 8px 16px;
-    border-radius: 4px;
-    background-color: #212121;
-    color: white;
-    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 5px 5px;
+    border-radius: 10px;
+    background-color: #dbdbdb;
     transition: background-color 0.3s ease;
+    flex-shrink: 0;
 }
 
 .homework-item a:hover {
     background-color: #424242;
 }
 
-/* larger screens or more complex content*/
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #000000;
+    color: #ddd;
+}
 
+.dark-mode h1 {
+    color: #ddd;
+}
+
+.dark-mode .homework-item {
+    background-color: #252525;
+    color: #ddd;
+    box-shadow: 0 2px 5px rgba(255, 255, 255, 0.1);
+}
+
+.dark-mode .homework-item:hover {
+    box-shadow: 0 0px 10px rgb(68, 68, 68);
+    transform: translateY(-2px);
+}
+
+.dark-mode .homework-item h2 {
+    color: #ddd;
+}
+
+.dark-mode .homework-item p {
+    color: #ddd;
+}
+
+.dark-mode .homework-item a {
+    background-color: #ddd;
+    color: #000000;
+}
+
+.dark-mode .homework-item a:hover {
+    background-color: #ffffff;
+}
+
+.dark-mode-button {
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    border: none;
+    padding: 9px 10px;
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.sortBtn {
+    position: fixed;
+    top: 120px;
+    right: 20px;
+    border: none;
+    padding: 9px 10px;
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.daSvgWithId {
+    position: fixed;
+    top: 170px;
+    right: 20px;
+    border: none;
+    padding: 9px 10px;
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.hideBtn {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    border: none;
+    padding: 9px 10px;
+    border-radius: 50%;
+    background-color: #dbdbdb;
+    color: white;
+    cursor: pointer;
+    z-index: 100;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s ease, transform 0.2s ease;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+/* hover properties for all buttons */
+.dark-mode-button:hover,
+.sortBtn:hover,
+.daSvgWithId:hover,
+.hideBtn:hover {
+    transform: translateY(-2px);
+    background-color: #666;
+    box-shadow: 1px 1px 1px 1px #000000;
+}
+
+/* hover properties for dark mode buttons and normal properties for the same */
+
+.dark-mode .dark-mode-button,
+.dark-mode .sortBtn,
+.dark-mode .daSvgWithId,
+.dark-mode .hideBtn {
+    background-color: #ddd;
+    color: #000000;
+}
+
+.dark-mode .dark-mode-button:hover,
+.dark-mode .sortBtn:hover,
+.dark-mode .daSvgWithId:hover,
+.dark-mode .hideBtn:hover {
+    background-color: #ffffff;
+    color: #000000;
+    box-shadow: 1px 1px 1px 1px #ffffff91;
+}
+
+/* footer */
+.footer {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #666;
+}
+
+.dark-mode .footer {
+    color: #999;
+}
+
+/* mobile friendliness */
 @media screen and (max-width: 800px) {
     .homework-container {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: 1fr;
+        /* Single column layout */
+    }
+
+    .dark-mode-button,
+    .sortBtn,
+    .daSvgWithId,
+    .hideBtn {
+        padding: 5px 5px;
+        /* Smaller button size */
     }
 }
